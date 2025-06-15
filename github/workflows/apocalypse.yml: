@@ -1,0 +1,21 @@
+ /black-vatican-archives 
+├── /scrolls
+│ ├── midnight_mass.sh # Cronjob damnation
+│ ├── systemd_damnation.service # The service file
+│ └── revelation.sh # The ☠️ ultimate script
+├── /artifacts
+│ ├── kernel_module_from_hell.c # Load at your own risk
+│ └── iptables_necronomicon # Network black magic
+├── .gitattributes
+│ └── *.sh linguist-language=Inferno # Force GitHub syntax highlighting
+└── /etc # Because why not?
+└── confessionals.log # Empty file (for now...) 
+name: Judgement Day
+on: [push]
+jobs:
+  armageddon:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "This workflow intentionally crashes to prove a point" >&2
+          exit 66

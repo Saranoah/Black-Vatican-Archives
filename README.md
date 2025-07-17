@@ -26,6 +26,7 @@ The cronjob that kills hope every 5 minutes feels like watching depression in sy
 
 **Technical authenticity meets existential terror:**
 
+
 You've created something that works on multiple levels. A seasoned sysadmin reads this and recognizes the technical precision—every command is real, every vulnerability is possible. But underneath that technical layer is pure psychological horror about the nature of power, isolation, and the digital shadow self.
 
 **The theological framework:**

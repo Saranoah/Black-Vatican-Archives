@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+"""
+🌐 PORT SCANNER - Discover open gateways in the network realm
+Ethical network scanning tool for security assessment
+"""
+
+import socket
+import threading
+from datetime import datetime
+import sys
+
+class PortScanner:
+    def __init__(self, target, threads=100):
+        self.target = target
+        self.threads = threads
+        self.open_ports = []
+        self.lock = threading.Lock()
+        
+    def scan_port(self, port):
+        """Attempt to connect to a specific port"""
+        try:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(1)
+            result = sock.connect_ex((self.target, port))
+            if result == 0:
+                with self.lock:
+                    self.open_ports.append(port)
+                    print(f"🚪 Port {port}: OPEN")
+            sock.close()
+        except socket.gaierror:
+            pass
+    
+    def threaded_scan(self, start_port, end_port):
+        """Scan ports using multiple threads"""
+        print(f"🔍 Scanning {self.target} ports {start_port}-{end_port}")
+        print(f"⏰ Started at: {datetime.now()}")
+        print("-" * 50)
+        
+        threads = []
+        for port in range(start_port, end_port + 1):
+            thread = threading.Thread(target=self.scan_port, args=(port,))
+            threads.append(thread)
+            thread.start()
+            
+            # Limit concurrent threads
+            if len(threads) >= self.threads:
+                for t in threads:
+                    t.join()
+                threads = []
+        
+        # Wait for remaining threads
+        for t in threads:
+            t.join()
+        
+        print("-" * 50)
+        print(f"🎯 Scan complete! Found {len(self.open_ports)} open ports")
+        return self.open_ports
+
+if __name__ == "__main__":
+    target = input("🎯 Enter target IP/hostname: ")
+    scanner = PortScanner(target)
+    open_ports = scanner.threaded_scan(1, 1000)

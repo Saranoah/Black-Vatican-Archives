@@ -170,13 +170,7 @@ root@blackvatican.hell accessed this file 666 times
 Last modification: Never (file exists outside of time)
 
 🖤💀⌨️ [ARCHIVE SEALED] 💀⌨️🖤
-yaml
-Copy
-Edit
 
----
-
-Let me know if you’d like a **PDF**, **rendered preview**, or **GitHub badge decorations** (e.g. ![God Mode](https://img.shields.io/badge/sudo-dark--divine-black)) added to the top.
 
 
 
